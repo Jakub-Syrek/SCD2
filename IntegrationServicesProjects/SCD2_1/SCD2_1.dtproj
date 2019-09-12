@@ -26,11 +26,12 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">QB</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoEdkom+fp0u05moMIv8jZwAAAAACAAAAAAAQZgAAAAEAACAAAAC8OPvY4ezWOHxX0n7ucFgPLCJG7sNzPoy68XwxX0lbdAAAAAAOgAAAAAIAACAAAADvidsyPvo0idG1UNSEy587FNfhVaEIvr14SQifYScq8pAAAAC3DKpUdsU0bwwRAJPjF5yYzEBwclweNwJGWgcSs2KtoZGAICext/mMNd2omE6zxiPchWOa8koXD05Bw1qJ1qKTnLTe0mxWYuws95zk9R6CgAv0XqaHbznz4qXRPuGHijPXQDCPCdy6Ng1cPc4iUbJIA3GwE7G63ShWfa9AsrXZsrN16Ja5drzS3wd0u9JRGZlAAAAAHVACEzxjqgn7yVMAH+mh5gY+AqUQViIEtGTJzy3kz9SzP4UqvOqkgemBQutA5IlH/pgs6dnXS33s3S1dVtoD0A==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoEdkom+fp0u05moMIv8jZwAAAAACAAAAAAAQZgAAAAEAACAAAACPaL/citocwmEzZSJCDF8sdR4oxuS8aHDifYj2zj/A9AAAAAAOgAAAAAIAACAAAACZiG6a4D3b7x8w8WAOqFoM8ZHUm6GEUk300wR/0Cd0x5AAAACH3Hj7HXlUmSxTieWFFRcIOzrKkTYZFEw8WYEyMHzwOpBsqH8veNjj9Jh8WinrkskJsXm9dS9jjQ896pq2PxzzIrFuf4o7KUa//DDvInySPZ5l5XFszR8NoAoPRQ7WugTJmLIKxB+jox9QWDcQ5EnCXyXSAYlW38K4CL9WdiJKDY3XNitoNlPTexP+GTbPYNhAAAAAj1T7G/lstS+9Oh/e2giLk5iYMhTqE0MLcimo9CyJisQW8PBvAvZKA8VOgcAeHbmrREt1ce07qF///nmSiZTO7Q==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="01_LoadDimProduct.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="02_LoadDimShop.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="01_LoadDimShop.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="Flat File Obszar Connection Manager.conmgr" />
@@ -657,7 +658,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=192.168.1.2;User ID=ExternalAdmin;Initial Catalog=SCD2;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-SCD2_1-{E5481DB9-D4D5-4819-9603-64056D25642D}192.168.1.2.SCD2.ExternalAdmin;Auto Translate=False;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=192.168.1.2;User ID=ExternalAdmin;Initial Catalog=SCD2;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-SCD2_1-{E5481DB9-D4D5-4819-9603-64056D25642D}192.168.1.2.SCD2.ExternalAdmin;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -752,16 +753,33 @@
             </SSIS:Parameter>
           </SSIS:ProjectConnectionParameters>
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="01_LoadDimProduct.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="02_LoadDimShop.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{5B55AFB6-6884-4357-B7F0-DB73F8DFA5A9}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">01_LoadDimProduct</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{1A7AE04D-AA4C-4E0C-83F7-1196DAF29604}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">02_LoadDimShop</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{9784BF4E-74D5-43AB-9E9C-F0BDA1454274}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{8ADA8BF7-9BC1-46AD-87F9-8854D9B385CC}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="01_LoadDimShop.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{6DDEF02F-58D9-4F11-817F-D0612374C57F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">01_LoadDimShop</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">11</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{98ED63F6-1CF3-43A9-BF65-B39FB71A8FAC}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

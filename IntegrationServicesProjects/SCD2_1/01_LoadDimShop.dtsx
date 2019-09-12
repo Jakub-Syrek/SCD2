@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="QB"
   DTS:CreatorName="QB\jaqbs"
-  DTS:DTSID="{5B55AFB6-6884-4357-B7F0-DB73F8DFA5A9}"
+  DTS:DTSID="{6DDEF02F-58D9-4F11-817F-D0612374C57F}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.1300.371"
   DTS:LocaleID="1033"
-  DTS:ObjectName="01_LoadDimProduct"
+  DTS:ObjectName="01_LoadDimShop"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{8FC706FC-CFFB-490E-8833-A106449F325F}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{50E11D34-CE36-4665-9A95-6E8AEB56526D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -658,7 +658,7 @@
                   dataType="System.Int32"
                   description="Specifies the type of join to perform."
                   name="JoinType"
-                  typeConverter="JoinType">2</property>
+                  typeConverter="JoinType">0</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the number of columns in the ordering key."
