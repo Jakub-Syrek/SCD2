@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="192.168.1.2.SCD2.ExternalAdmin"
+  DTS:DTSID="{E5481DB9-D4D5-4819-9603-64056D25642D}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=192.168.1.2;User ID=ExternalAdmin;Initial Catalog=SCD2;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-SCD2_1-{E5481DB9-D4D5-4819-9603-64056D25642D}192.168.1.2.SCD2.ExternalAdmin;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoEdkom+fp0u05moMIv8jZwAAAAACAAAAAAAQZgAAAAEAACAAAAARmElSPRdpas9UH412tcpxts6KIRMVvzaw19h76MYfCAAAAAAOgAAAAAIAACAAAADy3SBiEaAnx9tqljRlD1F4RfKPeJ01lB0dsNMwhJoq/YAAAABAcK9laqVonYzKs9c4sWuo21+Jtz7dzsLAJ4iZq9YgZgSEvl8rCL+BMG1DoTbbcTGoGBy+HyNnWV0aID5AJhKxsx0MpjKaEmkcugrnHijNajU65tybkHkOSR0wL1X8M5Qu3QmfGYIu9PDlR0Tgfep62hlR+ghBiVA8ixbIwy4XgUAAAABIUJGh0DTMUCZhRCog4ZoRdKrmwkewhO41lO6s5BoHaxP9WLS+tKmmzS0fgPZLAEE2Lw+4MhRJCQaGW6BBdpEE</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

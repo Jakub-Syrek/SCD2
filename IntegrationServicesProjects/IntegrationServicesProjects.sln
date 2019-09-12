@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SCD2_1", "SCD2_1\SCD2_1.dtproj", "{C3CDC611-7CDE-459D-AB64-EAC4C1587DB2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects", "Projects", "{2CA13436-C982-4E19-AA85-292B3C3E8252}"
+	ProjectSection(SolutionItems) = preProject
+		SCD2_1\_data\csv\Obszar.csv = SCD2_1\_data\csv\Obszar.csv
+		SCD2_1\_data\csv\Pracownik.csv = SCD2_1\_data\csv\Pracownik.csv
+		SCD2_1\_data\csv\Sklep.csv = SCD2_1\_data\csv\Sklep.csv
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3CDC611-7CDE-459D-AB64-EAC4C1587DB2}.Development|Default.ActiveCfg = Development
+		{C3CDC611-7CDE-459D-AB64-EAC4C1587DB2}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF6BD605-310F-4323-AC56-8FC300F7B0FD}
+	EndGlobalSection
+EndGlobal
