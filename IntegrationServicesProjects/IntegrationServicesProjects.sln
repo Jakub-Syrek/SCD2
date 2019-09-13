@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects", "Projects", "{2C
 		SCD2_1\_data\csv\Sklep.csv = SCD2_1\_data\csv\Sklep.csv
 	EndProjectSection
 EndProject
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Integration Services ETL", "SSIS_Projects\Integration Services ETL\Integration Services ETL.dtproj", "{C66ADB0A-9AD6-40D2-9D76-096A0560372B}"
+EndProject
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Integration Services WizyWydane", "SSIS_Projects\Integration Services WizyWydane\Integration Services WizyWydane.dtproj", "{F2CA103F-60CB-4A1F-95F6-1DBE149FE386}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Development|Default = Development|Default
@@ -19,6 +23,10 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C3CDC611-7CDE-459D-AB64-EAC4C1587DB2}.Development|Default.ActiveCfg = Development
 		{C3CDC611-7CDE-459D-AB64-EAC4C1587DB2}.Development|Default.Build.0 = Development
+		{C66ADB0A-9AD6-40D2-9D76-096A0560372B}.Development|Default.ActiveCfg = Development
+		{C66ADB0A-9AD6-40D2-9D76-096A0560372B}.Development|Default.Build.0 = Development
+		{F2CA103F-60CB-4A1F-95F6-1DBE149FE386}.Development|Default.ActiveCfg = Development
+		{F2CA103F-60CB-4A1F-95F6-1DBE149FE386}.Development|Default.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
