@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01_LoadDimShop"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{008D0352-6A36-47DD-8129-7E467A4468FE}">
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{A30C3E00-3710-4250-B431-242A28D59E17}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -47,7 +47,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[DimStoreReload]</property>
+                  name="OpenRowset">[dbo].[DimStoreReloadDated]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -56,7 +56,8 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT *
+  FROM [dbo].[DimStoresReload]</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -69,7 +70,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -81,7 +82,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                  name="FastLoadOptions">CHECK_CONSTRAINTS</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -246,6 +247,14 @@
                       dataType="str"
                       length="50"
                       name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimStores\DimStoreReload.Inputs[OLE DB Destination Input].ExternalColumns[DateFrom]"
+                      dataType="dbTimeStamp"
+                      name="DateFrom" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimStores\DimStoreReload.Inputs[OLE DB Destination Input].ExternalColumns[DateTo]"
+                      dataType="dbTimeStamp"
+                      name="DateTo" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2426,7 +2435,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{E5481DB9-D4D5-4819-9603-64056D25642D}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[DimStoreReload]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[DimStoresReload]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -2501,23 +2510,15 @@
     design-time-name="Package\DFT Load DimStores">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="246,42"
-          Id="Package\DFT Load DimStores\Sort OBSZAR by GeographyKey Asc"
-          TopLeft="514,205" />
-        <NodeLayout
-          Size="159,42"
-          Id="Package\DFT Load DimStores\FFS PRACOWNIK"
-          TopLeft="815,238" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\DFT Load DimStores\DimStoreReload"
-          TopLeft="455.5,442.5" />
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="261,42"
           Id="Package\DFT Load DimStores\Sort PRACOWNIK by EmployeeKey Asc"
           TopLeft="765,311" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\DFT Load DimStores\DimStoreReload"
+          TopLeft="455.5,442.5" />
         <NodeLayout
           Size="274,42"
           Id="Package\DFT Load DimStores\Merge Join SKLEPY OBSZAR PRACOWNIK"
@@ -2531,10 +2532,6 @@
           Id="Package\DFT Load DimStores\Merge Join SKLEPY OBSZAR"
           TopLeft="406,273" />
         <NodeLayout
-          Size="243,42"
-          Id="Package\DFT Load DimStores\Sort SKLEPY by GeographyKey Asc"
-          TopLeft="252,206" />
-        <NodeLayout
           Size="138,42"
           Id="Package\DFT Load DimStores\FFS OBSZAR"
           TopLeft="497,86" />
@@ -2542,74 +2539,18 @@
           Size="298,42"
           Id="Package\DFT Load DimStores\Sort SKLEPY_PRACOWNIK by ManagerKey Asc"
           TopLeft="370,358" />
-        <EdgeLayout
-          Id="Package\DFT Load DimStores.Paths[Flat File Source Output1]"
-          TopLeft="566,128">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="71,77"
-              Start="0,0"
-              End="71,69.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,34.5"
-                    Point2="0,38.5"
-                    Point3="4,38.5" />
-                  <mssgle:LineSegment
-                    End="67,38.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="67,38.5"
-                    Point2="71,38.5"
-                    Point3="71,42.5" />
-                  <mssgle:LineSegment
-                    End="71,69.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Load DimStores.Paths[Flat File Source Output]"
-          TopLeft="292.5,129">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="81,77"
-              Start="0,0"
-              End="81,69.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,34.5"
-                    Point2="0,38.5"
-                    Point3="4,38.5" />
-                  <mssgle:LineSegment
-                    End="77,38.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="77,38.5"
-                    Point2="81,38.5"
-                    Point3="81,42.5" />
-                  <mssgle:LineSegment
-                    End="81,69.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="243,42"
+          Id="Package\DFT Load DimStores\Sort SKLEPY by GeographyKey Asc"
+          TopLeft="252,206" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\DFT Load DimStores\FFS PRACOWNIK"
+          TopLeft="815,238" />
+        <NodeLayout
+          Size="246,42"
+          Id="Package\DFT Load DimStores\Sort OBSZAR by GeographyKey Asc"
+          TopLeft="514,205" />
         <EdgeLayout
           Id="Package\DFT Load DimStores.Paths[Sort Output3]"
           TopLeft="895.5,353">
@@ -2641,7 +2582,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2675,7 +2618,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2709,7 +2654,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2743,7 +2690,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2777,7 +2726,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2799,7 +2750,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2821,7 +2774,81 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load DimStores.Paths[Flat File Source Output1]"
+          TopLeft="566,128">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71,77"
+              Start="0,0"
+              End="71,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.5"
+                    Point2="0,38.5"
+                    Point3="4,38.5" />
+                  <mssgle:LineSegment
+                    End="67,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="67,38.5"
+                    Point2="71,38.5"
+                    Point3="71,42.5" />
+                  <mssgle:LineSegment
+                    End="71,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load DimStores.Paths[Flat File Source Output]"
+          TopLeft="292.5,129">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="81,77"
+              Start="0,0"
+              End="81,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.5"
+                    Point2="0,38.5"
+                    Point3="4,38.5" />
+                  <mssgle:LineSegment
+                    End="77,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="77,38.5"
+                    Point2="81,38.5"
+                    Point3="81,42.5" />
+                  <mssgle:LineSegment
+                    End="81,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

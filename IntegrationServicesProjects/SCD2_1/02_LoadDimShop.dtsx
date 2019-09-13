@@ -11,23 +11,11 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="02_LoadDimShop"
   DTS:PackageType="5"
-  DTS:VersionBuild="27"
-  DTS:VersionGUID="{8FEF618C-45B4-4B47-9A62-6D34FD2CD5F3}">
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{7876A489-D90A-4933-A50D-C10C05F93D1A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{8E0B4D2B-D89F-4B95-8A6F-BB100E25CC56}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[User::myRandomCsharpValue]"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="myRandomCsharpValue">
-      <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"></DTS:VariableValue>
-    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{0B0B8819-F7E5-45D3-8FE9-1EE838B0C098}"
@@ -90,15 +78,15 @@
           version="1">
           <components>
             <component
-              refId="Package\DFT DimShops\Derived Column"
+              refId="Package\DFT DimShops\Add DateTo Column"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column"
+              name="Add DateTo Column"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\DFT DimShops\Derived Column.Inputs[Derived Column Input]"
+                  refId="Package\DFT DimShops\Add DateTo Column.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <externalMetadataColumns />
@@ -106,55 +94,55 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT DimShops\Derived Column.Outputs[Derived Column Output]"
+                  refId="Package\DFT DimShops\Add DateTo Column.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\DFT DimShops\Derived Column.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\DFT DimShops\Add DateTo Column.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT DimShops\Derived Column.Outputs[Derived Column Output].Columns[Package Start Time]"
-                      dataType="date"
+                      refId="Package\DFT DimShops\Add DateTo Column.Outputs[Derived Column Output].Columns[DateTo]"
+                      dataType="dbTimeStamp"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT DimShops\Derived Column.Outputs[Derived Column Output].Columns[Package Start Time]"
-                      name="Package Start Time"
+                      lineageId="Package\DFT DimShops\Add DateTo Column.Outputs[Derived Column Output].Columns[DateTo]"
+                      name="DateTo"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">@[System::StartTime]</property>
+                          name="Expression">[GETDATE]()</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">@[System::StartTime]</property>
+                          name="FriendlyExpression">GETDATE()</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT DimShops\Derived Column.Outputs[Derived Column Error Output]"
+                  refId="Package\DFT DimShops\Add DateTo Column.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\DFT DimShops\Derived Column.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\DFT DimShops\Add DateTo Column.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT DimShops\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT DimShops\Add DateTo Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT DimShops\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT DimShops\Add DateTo Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT DimShops\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT DimShops\Add DateTo Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT DimShops\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT DimShops\Add DateTo Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -163,72 +151,71 @@
               </outputs>
             </component>
             <component
-              refId="Package\DFT DimShops\Derived Column 1"
+              refId="Package\DFT DimShops\DateFrom"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column 1"
+              name="DateFrom"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\DFT DimShops\Derived Column 1.Inputs[Derived Column Input]"
+                  refId="Package\DFT DimShops\DateFrom.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT DimShops\Derived Column 1.Inputs[Derived Column Input].Columns[Package Start Time]"
-                      cachedDataType="date"
-                      cachedName="Package Start Time"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT DimShops\Derived Column.Outputs[Derived Column Output].Columns[Package Start Time]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\DFT DimShops\Derived Column.Outputs[Derived Column Output].Columns[Package Start Time]}) ? [GETDATE]() : #{Package\DFT DimShops\Derived Column.Outputs[Derived Column Output].Columns[Package Start Time]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">ISNULL([Package Start Time]) ? GETDATE() : [Package Start Time]</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT DimShops\Derived Column 1.Outputs[Derived Column Output]"
+                  refId="Package\DFT DimShops\DateFrom.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\DFT DimShops\Derived Column 1.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\DFT DimShops\DateFrom.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT DimShops\DateFrom.Outputs[Derived Column Output].Columns[Package Start Time]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT DimShops\DateFrom.Outputs[Derived Column Output].Columns[Package Start Time]"
+                      name="Package Start Time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT DimShops\Derived Column 1.Outputs[Derived Column Error Output]"
+                  refId="Package\DFT DimShops\DateFrom.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\DFT DimShops\Derived Column 1.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\DFT DimShops\DateFrom.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT DimShops\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT DimShops\DateFrom.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT DimShops\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT DimShops\DateFrom.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT DimShops\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT DimShops\DateFrom.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT DimShops\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT DimShops\DateFrom.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1228,12 +1215,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status (1)]"
+                      refId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status (1)]"
-                      name="NEW Status (1)">
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status]"
+                      name="NEW Status">
                       <properties>
                         <property
                           containsID="true"
@@ -1243,12 +1230,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName (1)]"
+                      refId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName (1)]"
-                      name="NEW ContinentName (1)">
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName]"
+                      name="NEW ContinentName">
                       <properties>
                         <property
                           containsID="true"
@@ -1258,12 +1245,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName (1)]"
+                      refId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName (1)]"
-                      name="NEW CityName (1)">
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName]"
+                      name="NEW CityName">
                       <properties>
                         <property
                           containsID="true"
@@ -1273,12 +1260,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName (1)]"
+                      refId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName (1)]"
-                      name="NEW StateProvinceName (1)">
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName]"
+                      name="NEW StateProvinceName">
                       <properties>
                         <property
                           containsID="true"
@@ -1288,12 +1275,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName (1)]"
+                      refId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName (1)]"
-                      name="NEW RegionCountryName (1)">
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName]"
+                      name="NEW RegionCountryName">
                       <properties>
                         <property
                           containsID="true"
@@ -1303,12 +1290,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName (1)]"
+                      refId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName (1)]"
-                      name="NEW FirstName (1)">
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName]"
+                      name="NEW FirstName">
                       <properties>
                         <property
                           containsID="true"
@@ -1318,12 +1305,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName (1)]"
+                      refId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName (1)]"
-                      name="NEW LastName (1)">
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName]"
+                      name="NEW LastName">
                       <properties>
                         <property
                           containsID="true"
@@ -1333,12 +1320,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title (1)]"
+                      refId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title (1)]"
-                      name="NEW Title (1)">
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title]"
+                      name="NEW Title">
                       <properties>
                         <property
                           containsID="true"
@@ -1376,14 +1363,15 @@
       ,[FirstName]
       ,[LastName]
       ,[Title]
-      ,[PackageStartTime]
-  FROM [dbo].[DimStoreReloadDated]</property>
+      ,[DateFrom]
+      ,[DateTo]
+  FROM [dbo].[DimStoresReload]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT DISTINCT [StoreName]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT [StoreName]
       ,[StoreDescription]
       ,[Status]
       ,[ContinentName]
@@ -1393,8 +1381,9 @@
       ,[FirstName]
       ,[LastName]
       ,[Title]
-      ,[PackageStartTime]
-  FROM [dbo].[DimStoreReloadDated]) [refTable]
+      ,[DateFrom]
+      ,[DateTo]
+  FROM [dbo].[DimStoresReload]) [refTable]
 where [refTable].[StoreName] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -1414,7 +1403,7 @@ where [refTable].[StoreName] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                  name="NoMatchCachePercentage">0</property>
+                  name="NoMatchCachePercentage">20</property>
                 <property
                   dataType="System.Int32"
                   description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
@@ -1426,7 +1415,7 @@ where [refTable].[StoreName] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="StoreName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="StoreDescription" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Status" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="ContinentName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="CityName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="StateProvinceName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="RegionCountryName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="FirstName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="LastName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Title" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="PackageStartTime" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="StoreName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="StoreDescription" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Status" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="ContinentName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="CityName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="StateProvinceName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="RegionCountryName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="FirstName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="LastName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Title" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="DateFrom" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DateTo" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -1676,6 +1665,26 @@ where [refTable].[StoreName] = ?</property>
                           name="CopyFromReferenceColumn">Title</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT DimShops\Lkp - CheckIfNew.Inputs[Lookup Input].Columns[DateFrom]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Package Start Time"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT DimShops\DateFrom.Outputs[Derived Column Output].Columns[Package Start Time]"
+                      name="DateFrom"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn" />
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DateFrom</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1687,6 +1696,22 @@ where [refTable].[StoreName] = ?</property>
                   exclusionGroup="1"
                   name="Lookup Match Output"
                   synchronousInputId="Package\DFT DimShops\Lkp - CheckIfNew.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT DimShops\Lkp - CheckIfNew.Outputs[Lookup Match Output].Columns[DateTo]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT DimShops\Lkp - CheckIfNew.Outputs[Lookup Match Output].Columns[DateTo]"
+                      name="DateTo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DateTo</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -2294,13 +2319,6 @@ where [refTable].[StoreName] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT DimShops\Multicast.Outputs[Multicast Output 1]"
-                  deleteOutputOnPathDetached="true"
-                  name="Multicast Output 1"
-                  synchronousInputId="Package\DFT DimShops\Multicast.Inputs[Multicast Input 1]">
-                  <externalMetadataColumns />
-                </output>
-                <output
                   refId="Package\DFT DimShops\Multicast.Outputs[Multicast Output 2]"
                   deleteOutputOnPathDetached="true"
                   name="Multicast Output 2"
@@ -2309,9 +2327,16 @@ where [refTable].[StoreName] = ?</property>
                 </output>
                 <output
                   refId="Package\DFT DimShops\Multicast.Outputs[Multicast Output 3]"
-                  dangling="true"
                   deleteOutputOnPathDetached="true"
                   name="Multicast Output 3"
+                  synchronousInputId="Package\DFT DimShops\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT DimShops\Multicast.Outputs[Multicast Output 1]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
                   synchronousInputId="Package\DFT DimShops\Multicast.Inputs[Multicast Input 1]">
                   <externalMetadataColumns />
                 </output>
@@ -3084,7 +3109,7 @@ where [refTable].[StoreName] = ?</property>
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT *
-FROM [dbo].[DimStoreReloadDated]</property>
+  FROM [dbo].[DimStoresReload]</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -3231,13 +3256,22 @@ FROM [dbo].[DimStoreReloadDated]</property>
                       name="Title"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Output].Columns[PackageStartTime]"
+                      refId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Output].Columns[DateFrom]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Output].ExternalColumns[PackageStartTime]"
-                      lineageId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Output].Columns[PackageStartTime]"
-                      name="PackageStartTime"
+                      externalMetadataColumnId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Output].ExternalColumns[DateFrom]"
+                      lineageId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Output].Columns[DateFrom]"
+                      name="DateFrom"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Output].Columns[DateTo]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Output].ExternalColumns[DateTo]"
+                      lineageId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Output].Columns[DateTo]"
+                      name="DateTo"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -3303,9 +3337,13 @@ FROM [dbo].[DimStoreReloadDated]</property>
                       length="50"
                       name="Title" />
                     <externalMetadataColumn
-                      refId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Output].ExternalColumns[PackageStartTime]"
+                      refId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Output].ExternalColumns[DateFrom]"
                       dataType="dbTimeStamp"
-                      name="PackageStartTime" />
+                      name="DateFrom" />
+                    <externalMetadataColumn
+                      refId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Output].ExternalColumns[DateTo]"
+                      dataType="dbTimeStamp"
+                      name="DateTo" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3384,10 +3422,15 @@ FROM [dbo].[DimStoreReloadDated]</property>
                       lineageId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Error Output].Columns[Title]"
                       name="Title" />
                     <outputColumn
-                      refId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Error Output].Columns[PackageStartTime]"
+                      refId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Error Output].Columns[DateFrom]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Error Output].Columns[PackageStartTime]"
-                      name="PackageStartTime" />
+                      lineageId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Error Output].Columns[DateFrom]"
+                      name="DateFrom" />
+                    <outputColumn
+                      refId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Error Output].Columns[DateTo]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Error Output].Columns[DateTo]"
+                      name="DateTo" />
                     <outputColumn
                       refId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -3421,7 +3464,7 @@ FROM [dbo].[DimStoreReloadDated]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[DimStoreReloadDated]</property>
+                  name="OpenRowset">[dbo].[DimProduct]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -3430,7 +3473,8 @@ FROM [dbo].[DimStoreReloadDated]</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT *
+  FROM [dbo].[DimStoresReload]</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3443,7 +3487,7 @@ FROM [dbo].[DimStoreReloadDated]</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -3494,74 +3538,74 @@ FROM [dbo].[DimStoreReloadDated]</property>
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreDescription]"
                       lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW StoreDescription (1)]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW Status (1)]"
+                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW Status]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW Status (1)"
+                      cachedName="NEW Status"
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
-                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Status (1)]" />
+                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Status]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW ContinentName (1)]"
+                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW ContinentName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW ContinentName (1)"
+                      cachedName="NEW ContinentName"
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContinentName]"
-                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW ContinentName (1)]" />
+                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW ContinentName]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW CityName (1)]"
+                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW CityName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW CityName (1)"
+                      cachedName="NEW CityName"
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
-                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW CityName (1)]" />
+                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW CityName]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW StateProvinceName (1)]"
+                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW StateProvinceName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW StateProvinceName (1)"
+                      cachedName="NEW StateProvinceName"
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
-                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW StateProvinceName (1)]" />
+                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW StateProvinceName]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW RegionCountryName (1)]"
+                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW RegionCountryName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW RegionCountryName (1)"
+                      cachedName="NEW RegionCountryName"
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RegionCountryName]"
-                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW RegionCountryName (1)]" />
+                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW RegionCountryName]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW FirstName (1)]"
+                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW FirstName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW FirstName (1)"
+                      cachedName="NEW FirstName"
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
-                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW FirstName (1)]" />
+                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW FirstName]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW LastName (1)]"
+                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW LastName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW LastName (1)"
+                      cachedName="NEW LastName"
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
-                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW LastName (1)]" />
+                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW LastName]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW Title (1)]"
+                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW Title]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW Title (1)"
+                      cachedName="NEW Title"
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
-                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Title (1)]" />
+                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Title]" />
                     <inputColumn
                       refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Package Start Time]"
-                      cachedDataType="date"
+                      cachedDataType="dbTimeStamp"
                       cachedName="Package Start Time"
-                      externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PackageStartTime]"
+                      externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateFrom]"
                       lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[Package Start Time]" />
                   </inputColumns>
                   <externalMetadataColumns
@@ -3627,9 +3671,13 @@ FROM [dbo].[DimStoreReloadDated]</property>
                       length="50"
                       name="Title" />
                     <externalMetadataColumn
-                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PackageStartTime]"
+                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateFrom]"
                       dataType="dbTimeStamp"
-                      name="PackageStartTime" />
+                      name="DateFrom" />
+                    <externalMetadataColumn
+                      refId="Package\DFT DimShops\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateTo]"
+                      dataType="dbTimeStamp"
+                      name="DateTo" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3674,7 +3722,7 @@ FROM [dbo].[DimStoreReloadDated]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[DimStoreReload]</property>
+                  name="OpenRowset">[DimStoresReload]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -3683,7 +3731,8 @@ FROM [dbo].[DimStoreReloadDated]</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT *
+FROM dbo.DimStoresReload</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3696,7 +3745,7 @@ FROM [dbo].[DimStoreReloadDated]</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -3812,6 +3861,12 @@ FROM [dbo].[DimStoreReloadDated]</property>
                       cachedName="OLE Title"
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination InsertNewRows.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
                       lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE Title]" />
+                    <inputColumn
+                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows.Inputs[OLE DB Destination Input].Columns[Package Start Time]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Package Start Time"
+                      externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination InsertNewRows.Inputs[OLE DB Destination Input].ExternalColumns[DateTo]"
+                      lineageId="Package\DFT DimShops\DateFrom.Outputs[Derived Column Output].Columns[Package Start Time]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3875,6 +3930,14 @@ FROM [dbo].[DimStoreReloadDated]</property>
                       dataType="str"
                       length="50"
                       name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows.Inputs[OLE DB Destination Input].ExternalColumns[DateFrom]"
+                      dataType="dbTimeStamp"
+                      name="DateFrom" />
+                    <externalMetadataColumn
+                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows.Inputs[OLE DB Destination Input].ExternalColumns[DateTo]"
+                      dataType="dbTimeStamp"
+                      name="DateTo" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3928,7 +3991,8 @@ FROM [dbo].[DimStoreReloadDated]</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT *
+  FROM [dbo].[DimStoresReload]</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3941,7 +4005,7 @@ FROM [dbo].[DimStoreReloadDated]</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -3992,69 +4056,75 @@ FROM [dbo].[DimStoreReloadDated]</property>
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].ExternalColumns[StoreDescription]"
                       lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StoreDescription (1)]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].Columns[NEW Status (1)]"
+                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].Columns[NEW Status]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW Status (1)"
+                      cachedName="NEW Status"
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status (1)]" />
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].Columns[NEW ContinentName (1)]"
+                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].Columns[NEW ContinentName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW ContinentName (1)"
+                      cachedName="NEW ContinentName"
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].ExternalColumns[ContinentName]"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName (1)]" />
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].Columns[NEW CityName (1)]"
+                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].Columns[NEW CityName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW CityName (1)"
+                      cachedName="NEW CityName"
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName (1)]" />
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].Columns[NEW StateProvinceName (1)]"
+                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].Columns[NEW StateProvinceName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW StateProvinceName (1)"
+                      cachedName="NEW StateProvinceName"
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName (1)]" />
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].Columns[NEW RegionCountryName (1)]"
+                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].Columns[NEW RegionCountryName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW RegionCountryName (1)"
+                      cachedName="NEW RegionCountryName"
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].ExternalColumns[RegionCountryName]"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName (1)]" />
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].Columns[NEW FirstName (1)]"
+                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].Columns[NEW FirstName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW FirstName (1)"
+                      cachedName="NEW FirstName"
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName (1)]" />
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].Columns[NEW LastName (1)]"
+                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].Columns[NEW LastName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW LastName (1)"
+                      cachedName="NEW LastName"
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName (1)]" />
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].Columns[NEW Title (1)]"
+                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].Columns[NEW Title]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW Title (1)"
+                      cachedName="NEW Title"
                       externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title (1)]" />
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title]" />
+                    <inputColumn
+                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].Columns[Package Start Time]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Package Start Time"
+                      externalMetadataColumnId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].ExternalColumns[DateTo]"
+                      lineageId="Package\DFT DimShops\DateFrom.Outputs[Derived Column Output].Columns[Package Start Time]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4118,6 +4188,14 @@ FROM [dbo].[DimStoreReloadDated]</property>
                       dataType="str"
                       length="50"
                       name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].ExternalColumns[DateFrom]"
+                      dataType="dbTimeStamp"
+                      name="DateFrom" />
+                    <externalMetadataColumn
+                      refId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input].ExternalColumns[DateTo]"
+                      dataType="dbTimeStamp"
+                      name="DateTo" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4239,14 +4317,14 @@ FROM [dbo].[DimStoreReloadDated]</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input].Columns[NEW Status (1)]"
+                      refId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input].Columns[NEW Status]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW Status (1)"
+                      cachedName="NEW Status"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status (1)]"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status]"
                       truncationRowDisposition="FailComponent"
                       usageType="readWrite">
                       <properties>
@@ -4254,7 +4332,7 @@ FROM [dbo].[DimStoreReloadDated]</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status (1)]}) ? "!Brak" : #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status (1)]}</property>
+                          name="Expression">[ISNULL](#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status]}) ? "!Brak" : #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -4264,14 +4342,14 @@ FROM [dbo].[DimStoreReloadDated]</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input].Columns[NEW ContinentName (1)]"
+                      refId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input].Columns[NEW ContinentName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW ContinentName (1)"
+                      cachedName="NEW ContinentName"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName (1)]"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName]"
                       truncationRowDisposition="FailComponent"
                       usageType="readWrite">
                       <properties>
@@ -4279,7 +4357,7 @@ FROM [dbo].[DimStoreReloadDated]</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName (1)]}) ? "!Brak" : #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName (1)]}</property>
+                          name="Expression">[ISNULL](#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName]}) ? "!Brak" : #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -4289,14 +4367,14 @@ FROM [dbo].[DimStoreReloadDated]</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input].Columns[NEW CityName (1)]"
+                      refId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input].Columns[NEW CityName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW CityName (1)"
+                      cachedName="NEW CityName"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName (1)]"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName]"
                       truncationRowDisposition="FailComponent"
                       usageType="readWrite">
                       <properties>
@@ -4304,7 +4382,7 @@ FROM [dbo].[DimStoreReloadDated]</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName (1)]}) ? "!Brak" : #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName (1)]}</property>
+                          name="Expression">[ISNULL](#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName]}) ? "!Brak" : #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -4314,14 +4392,14 @@ FROM [dbo].[DimStoreReloadDated]</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input].Columns[NEW StateProvinceName (1)]"
+                      refId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input].Columns[NEW StateProvinceName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW StateProvinceName (1)"
+                      cachedName="NEW StateProvinceName"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName (1)]"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName]"
                       truncationRowDisposition="FailComponent"
                       usageType="readWrite">
                       <properties>
@@ -4329,7 +4407,7 @@ FROM [dbo].[DimStoreReloadDated]</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName (1)]}) ? "!Brak" : #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName (1)]}</property>
+                          name="Expression">[ISNULL](#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName]}) ? "!Brak" : #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -4339,14 +4417,14 @@ FROM [dbo].[DimStoreReloadDated]</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input].Columns[NEW RegionCountryName (1)]"
+                      refId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input].Columns[NEW RegionCountryName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW RegionCountryName (1)"
+                      cachedName="NEW RegionCountryName"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName (1)]"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName]"
                       truncationRowDisposition="FailComponent"
                       usageType="readWrite">
                       <properties>
@@ -4354,7 +4432,7 @@ FROM [dbo].[DimStoreReloadDated]</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName (1)]}) ? "!Brak" : #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName (1)]}</property>
+                          name="Expression">[ISNULL](#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName]}) ? "!Brak" : #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -4364,14 +4442,14 @@ FROM [dbo].[DimStoreReloadDated]</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input].Columns[NEW FirstName (1)]"
+                      refId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input].Columns[NEW FirstName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW FirstName (1)"
+                      cachedName="NEW FirstName"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName (1)]"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName]"
                       truncationRowDisposition="FailComponent"
                       usageType="readWrite">
                       <properties>
@@ -4379,7 +4457,7 @@ FROM [dbo].[DimStoreReloadDated]</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName (1)]}) ? "!Brak" : #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName (1)]}</property>
+                          name="Expression">[ISNULL](#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName]}) ? "!Brak" : #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -4389,14 +4467,14 @@ FROM [dbo].[DimStoreReloadDated]</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input].Columns[NEW LastName (1)]"
+                      refId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input].Columns[NEW LastName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW LastName (1)"
+                      cachedName="NEW LastName"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName (1)]"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName]"
                       truncationRowDisposition="FailComponent"
                       usageType="readWrite">
                       <properties>
@@ -4404,7 +4482,7 @@ FROM [dbo].[DimStoreReloadDated]</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName (1)]}) ? "!Brak" : #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName (1)]}</property>
+                          name="Expression">[ISNULL](#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName]}) ? "!Brak" : #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -4414,14 +4492,14 @@ FROM [dbo].[DimStoreReloadDated]</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input].Columns[NEW Title (1)]"
+                      refId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input].Columns[NEW Title]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW Title (1)"
+                      cachedName="NEW Title"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title (1)]"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title]"
                       truncationRowDisposition="FailComponent"
                       usageType="readWrite">
                       <properties>
@@ -4429,7 +4507,7 @@ FROM [dbo].[DimStoreReloadDated]</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title (1)]}) ? "!Brak" : #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title (1)]}</property>
+                          name="Expression">[ISNULL](#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title]}) ? "!Brak" : #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -4440,11 +4518,11 @@ FROM [dbo].[DimStoreReloadDated]</property>
                     </inputColumn>
                     <inputColumn
                       refId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input].Columns[Package Start Time]"
-                      cachedDataType="date"
+                      cachedDataType="dbTimeStamp"
                       cachedName="Package Start Time"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT DimShops\Derived Column.Outputs[Derived Column Output].Columns[Package Start Time]"
+                      lineageId="Package\DFT DimShops\DateFrom.Outputs[Derived Column Output].Columns[Package Start Time]"
                       truncationRowDisposition="FailComponent"
                       usageType="readWrite">
                       <properties>
@@ -4452,7 +4530,7 @@ FROM [dbo].[DimStoreReloadDated]</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">#{Package\DFT DimShops\Derived Column.Outputs[Derived Column Output].Columns[Package Start Time]}</property>
+                          name="Expression">#{Package\DFT DimShops\DateFrom.Outputs[Derived Column Output].Columns[Package Start Time]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -4634,7 +4712,7 @@ FROM [dbo].[DimStoreReloadDated]</property>
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dbo].[DimStoreReloadDated]SET [PackageStartTime] = ?
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dbo].[DimStoresReload]SET [DateTo] = ?
 WHERE [StoreName] = ?
 ;</property>
                 <property
@@ -4660,18 +4738,18 @@ WHERE [StoreName] = ?
                   <inputColumns>
                     <inputColumn
                       refId="Package\DFT DimShops\Set DateTo to GETDATE.Inputs[OLE DB Command Input].Columns[Package Start Time]"
-                      cachedDataType="date"
+                      cachedDataType="dbTimeStamp"
                       cachedName="Package Start Time"
                       externalMetadataColumnId="Package\DFT DimShops\Set DateTo to GETDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                       lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[Package Start Time]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\Set DateTo to GETDATE.Inputs[OLE DB Command Input].Columns[OLE StoreName]"
+                      refId="Package\DFT DimShops\Set DateTo to GETDATE.Inputs[OLE DB Command Input].Columns[NEW StoreName (1)]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="OLE StoreName"
+                      cachedName="NEW StoreName (1)"
                       externalMetadataColumnId="Package\DFT DimShops\Set DateTo to GETDATE.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[OLE StoreName]" />
+                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW StoreName (1)]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -6047,63 +6125,6 @@ WHERE [StoreName] = ?
                       cachedName="OLE StoreDescription"
                       lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE StoreDescription]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[OLE Status]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE Status"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE Status]" />
-                    <inputColumn
-                      refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[OLE ContinentName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE ContinentName"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE ContinentName]" />
-                    <inputColumn
-                      refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[OLE CityName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE CityName"
-                      cachedSortKeyPosition="2"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE CityName]" />
-                    <inputColumn
-                      refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[OLE StateProvinceName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE StateProvinceName"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE StateProvinceName]" />
-                    <inputColumn
-                      refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[OLE RegionCountryName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE RegionCountryName"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE RegionCountryName]" />
-                    <inputColumn
-                      refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[OLE FirstName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE FirstName"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE FirstName]" />
-                    <inputColumn
-                      refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[OLE LastName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE LastName"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE LastName]" />
-                    <inputColumn
-                      refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[OLE Title]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE Title"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE Title]" />
-                    <inputColumn
                       refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[NEW StoreName (1)]"
                       cachedCodepage="1250"
                       cachedDataType="str"
@@ -6118,61 +6139,10 @@ WHERE [StoreName] = ?
                       cachedName="NEW StoreDescription (1)"
                       lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StoreDescription (1)]" />
                     <inputColumn
-                      refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[NEW Status (1)]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="NEW Status (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status (1)]" />
-                    <inputColumn
-                      refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[NEW ContinentName (1)]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="NEW ContinentName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName (1)]" />
-                    <inputColumn
-                      refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[NEW CityName (1)]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="NEW CityName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName (1)]" />
-                    <inputColumn
-                      refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[NEW StateProvinceName (1)]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="NEW StateProvinceName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName (1)]" />
-                    <inputColumn
-                      refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[NEW RegionCountryName (1)]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="NEW RegionCountryName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName (1)]" />
-                    <inputColumn
-                      refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[NEW FirstName (1)]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="NEW FirstName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName (1)]" />
-                    <inputColumn
-                      refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[NEW LastName (1)]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="NEW LastName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName (1)]" />
-                    <inputColumn
-                      refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[NEW Title (1)]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="NEW Title (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title (1)]" />
+                      refId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input].Columns[Package Start Time]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Package Start Time"
+                      lineageId="Package\DFT DimShops\DateFrom.Outputs[Derived Column Output].Columns[Package Start Time]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -6248,13 +6218,13 @@ WHERE [StoreName] = ?
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">(#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE StoreName]} != #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StoreName (1)]}) || (#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE StoreDescription]} != #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StoreDescription (1)]}) || (#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE Status]} != #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status (1)]}) || (#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE ContinentName]} != #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName (1)]}) || (#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE CityName]} != #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName (1)]}) || (#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE StateProvinceName]} != #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName (1)]}) || (#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE RegionCountryName]} != #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName (1)]}) != (#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE FirstName]} != #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName (1)]}) || (#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE LastName]} != #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName (1)]}) || (#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE Title]} != #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title (1)]})</property>
+                      name="Expression">(#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE StoreName]} != #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StoreName (1)]}) || (#{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE StoreDescription]} != #{Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StoreDescription (1)]}) || [ISNULL](#{Package\DFT DimShops\DateFrom.Outputs[Derived Column Output].Columns[Package Start Time]})</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the friendly version of the expression. This expression version uses column names."
                       expressionType="Notify"
-                      name="FriendlyExpression">([OLE StoreName] != [NEW StoreName (1)]) || ([OLE StoreDescription] != [NEW StoreDescription (1)]) || ([OLE Status] != [NEW Status (1)]) || ([OLE ContinentName] != [NEW ContinentName (1)]) || ([OLE CityName] != [NEW CityName (1)]) || ([OLE StateProvinceName] != [NEW StateProvinceName (1)]) || ([OLE RegionCountryName] != [NEW RegionCountryName (1)]) != ([OLE FirstName] != [NEW FirstName (1)]) || ([OLE LastName] != [NEW LastName (1)]) || ([OLE Title] != [NEW Title (1)])</property>
+                      name="FriendlyExpression">([OLE StoreName] != [NEW StoreName (1)]) || ([OLE StoreDescription] != [NEW StoreDescription (1)]) || ISNULL([Package Start Time])</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
@@ -6523,130 +6493,130 @@ WHERE [StoreName] = ?
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 1].Columns[NEW Status (1)]"
+                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 1].Columns[NEW Status]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW Status (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status (1)]">
+                      cachedName="NEW Status"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Status (1)]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Status]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 1].Columns[NEW ContinentName (1)]"
+                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 1].Columns[NEW ContinentName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW ContinentName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName (1)]">
+                      cachedName="NEW ContinentName"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW ContinentName (1)]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW ContinentName]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 1].Columns[NEW CityName (1)]"
+                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 1].Columns[NEW CityName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW CityName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName (1)]">
+                      cachedName="NEW CityName"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW CityName (1)]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW CityName]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 1].Columns[NEW StateProvinceName (1)]"
+                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 1].Columns[NEW StateProvinceName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW StateProvinceName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName (1)]">
+                      cachedName="NEW StateProvinceName"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW StateProvinceName (1)]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW StateProvinceName]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 1].Columns[NEW RegionCountryName (1)]"
+                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 1].Columns[NEW RegionCountryName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW RegionCountryName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName (1)]">
+                      cachedName="NEW RegionCountryName"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW RegionCountryName (1)]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW RegionCountryName]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 1].Columns[NEW FirstName (1)]"
+                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 1].Columns[NEW FirstName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW FirstName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName (1)]">
+                      cachedName="NEW FirstName"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW FirstName (1)]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW FirstName]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 1].Columns[NEW LastName (1)]"
+                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 1].Columns[NEW LastName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW LastName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName (1)]">
+                      cachedName="NEW LastName"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW LastName (1)]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW LastName]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 1].Columns[NEW Title (1)]"
+                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 1].Columns[NEW Title]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW Title (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title (1)]">
+                      cachedName="NEW Title"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Title (1)]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Title]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
                       refId="Package\DFT DimShops\Union All.Inputs[Union All Input 1].Columns[Package Start Time]"
-                      cachedDataType="date"
+                      cachedDataType="dbTimeStamp"
                       cachedName="Package Start Time"
-                      lineageId="Package\DFT DimShops\Derived Column.Outputs[Derived Column Output].Columns[Package Start Time]">
+                      lineageId="Package\DFT DimShops\DateFrom.Outputs[Derived Column Output].Columns[Package Start Time]">
                       <properties>
                         <property
                           containsID="true"
@@ -6663,158 +6633,6 @@ WHERE [StoreName] = ?
                   hasSideEffects="true"
                   name="Union All Input 2">
                   <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[OLE StoreName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE StoreName"
-                      cachedSortKeyPosition="1"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE StoreName]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[OLE StoreName]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[OLE StoreDescription]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE StoreDescription"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE StoreDescription]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[OLE StoreDescription]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[OLE Status]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE Status"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE Status]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[OLE Status]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[OLE ContinentName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE ContinentName"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE ContinentName]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[OLE ContinentName]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[OLE CityName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE CityName"
-                      cachedSortKeyPosition="2"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE CityName]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[OLE CityName]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[OLE StateProvinceName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE StateProvinceName"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE StateProvinceName]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[OLE StateProvinceName]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[OLE RegionCountryName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE RegionCountryName"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE RegionCountryName]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[OLE RegionCountryName]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[OLE FirstName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE FirstName"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE FirstName]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[OLE FirstName]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[OLE LastName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE LastName"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE LastName]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[OLE LastName]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[OLE Title]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OLE Title"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[OLE Title]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[OLE Title]}</property>
-                      </properties>
-                    </inputColumn>
                     <inputColumn
                       refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[NEW StoreName (1)]"
                       cachedCodepage="1250"
@@ -6846,130 +6664,130 @@ WHERE [StoreName] = ?
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[NEW Status (1)]"
+                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[NEW Status]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW Status (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status (1)]">
+                      cachedName="NEW Status"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Status]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Status (1)]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Status]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[NEW ContinentName (1)]"
+                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[NEW ContinentName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW ContinentName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName (1)]">
+                      cachedName="NEW ContinentName"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW ContinentName]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW ContinentName (1)]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW ContinentName]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[NEW CityName (1)]"
+                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[NEW CityName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW CityName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName (1)]">
+                      cachedName="NEW CityName"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW CityName]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW CityName (1)]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW CityName]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[NEW StateProvinceName (1)]"
+                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[NEW StateProvinceName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW StateProvinceName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName (1)]">
+                      cachedName="NEW StateProvinceName"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW StateProvinceName]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW StateProvinceName (1)]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW StateProvinceName]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[NEW RegionCountryName (1)]"
+                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[NEW RegionCountryName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW RegionCountryName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName (1)]">
+                      cachedName="NEW RegionCountryName"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW RegionCountryName]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW RegionCountryName (1)]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW RegionCountryName]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[NEW FirstName (1)]"
+                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[NEW FirstName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW FirstName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName (1)]">
+                      cachedName="NEW FirstName"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW FirstName]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW FirstName (1)]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW FirstName]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[NEW LastName (1)]"
+                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[NEW LastName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW LastName (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName (1)]">
+                      cachedName="NEW LastName"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW LastName]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW LastName (1)]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW LastName]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[NEW Title (1)]"
+                      refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[NEW Title]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="NEW Title (1)"
-                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title (1)]">
+                      cachedName="NEW Title"
+                      lineageId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output].Columns[NEW Title]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Title (1)]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Title]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
                       refId="Package\DFT DimShops\Union All.Inputs[Union All Input 2].Columns[Package Start Time]"
-                      cachedDataType="date"
+                      cachedDataType="dbTimeStamp"
                       cachedName="Package Start Time"
-                      lineageId="Package\DFT DimShops\Derived Column.Outputs[Derived Column Output].Columns[Package Start Time]">
+                      lineageId="Package\DFT DimShops\DateFrom.Outputs[Derived Column Output].Columns[Package Start Time]">
                       <properties>
                         <property
                           containsID="true"
@@ -6982,10 +6800,10 @@ WHERE [StoreName] = ?
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\DFT DimShops\Union All.Inputs[Union All Input 3]"
+                  refId="Package\DFT DimShops\Union All.Inputs[Union All Input 4]"
                   dangling="true"
                   hasSideEffects="true"
-                  name="Union All Input 3">
+                  name="Union All Input 4">
                   <externalMetadataColumns />
                 </input>
               </inputs>
@@ -7079,64 +6897,64 @@ WHERE [StoreName] = ?
                       lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW StoreDescription (1)]"
                       name="NEW StoreDescription (1)" />
                     <outputColumn
-                      refId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Status (1)]"
+                      refId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Status]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Status (1)]"
-                      name="NEW Status (1)" />
+                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Status]"
+                      name="NEW Status" />
                     <outputColumn
-                      refId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW ContinentName (1)]"
+                      refId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW ContinentName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW ContinentName (1)]"
-                      name="NEW ContinentName (1)" />
+                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW ContinentName]"
+                      name="NEW ContinentName" />
                     <outputColumn
-                      refId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW CityName (1)]"
+                      refId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW CityName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW CityName (1)]"
-                      name="NEW CityName (1)" />
+                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW CityName]"
+                      name="NEW CityName" />
                     <outputColumn
-                      refId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW StateProvinceName (1)]"
+                      refId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW StateProvinceName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW StateProvinceName (1)]"
-                      name="NEW StateProvinceName (1)" />
+                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW StateProvinceName]"
+                      name="NEW StateProvinceName" />
                     <outputColumn
-                      refId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW RegionCountryName (1)]"
+                      refId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW RegionCountryName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW RegionCountryName (1)]"
-                      name="NEW RegionCountryName (1)" />
+                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW RegionCountryName]"
+                      name="NEW RegionCountryName" />
                     <outputColumn
-                      refId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW FirstName (1)]"
+                      refId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW FirstName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW FirstName (1)]"
-                      name="NEW FirstName (1)" />
+                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW FirstName]"
+                      name="NEW FirstName" />
                     <outputColumn
-                      refId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW LastName (1)]"
+                      refId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW LastName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW LastName (1)]"
-                      name="NEW LastName (1)" />
+                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW LastName]"
+                      name="NEW LastName" />
                     <outputColumn
-                      refId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Title (1)]"
+                      refId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Title]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Title (1)]"
-                      name="NEW Title (1)" />
+                      lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[NEW Title]"
+                      name="NEW Title" />
                     <outputColumn
                       refId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[Package Start Time]"
-                      dataType="date"
+                      dataType="dbTimeStamp"
                       lineageId="Package\DFT DimShops\Union All.Outputs[Union All Output 1].Columns[Package Start Time]"
                       name="Package Start Time" />
                   </outputColumns>
@@ -7155,12 +6973,12 @@ WHERE [StoreName] = ?
               refId="Package\DFT DimShops.Paths[Derived Column Output]"
               endId="Package\DFT DimShops\RC All Rows.Inputs[Row Count Input 1]"
               name="Derived Column Output"
-              startId="Package\DFT DimShops\Derived Column.Outputs[Derived Column Output]" />
+              startId="Package\DFT DimShops\DateFrom.Outputs[Derived Column Output]" />
             <path
               refId="Package\DFT DimShops.Paths[Derived Column Output1]"
               endId="Package\DFT DimShops\OLE DB Destination InsertNewRows.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
-              startId="Package\DFT DimShops\Derived Column 1.Outputs[Derived Column Output]" />
+              startId="Package\DFT DimShops\Add DateTo Column.Outputs[Derived Column Output]" />
             <path
               refId="Package\DFT DimShops.Paths[Derived Column Output2]"
               endId="Package\DFT DimShops\Split Actions UPSERT.Inputs[Conditional Split Input]"
@@ -7182,35 +7000,35 @@ WHERE [StoreName] = ?
               name="Flat File Source Output"
               startId="Package\DFT DimShops\FFS SKLEPY.Outputs[Flat File Source Output]" />
             <path
-              refId="Package\DFT DimShops.Paths[Lookup No Match Output]"
-              endId="Package\DFT DimShops\Derived Column 1.Inputs[Derived Column Input]"
-              name="Lookup No Match Output"
-              startId="Package\DFT DimShops\Lkp - CheckIfNew.Outputs[Lookup No Match Output]" />
+              refId="Package\DFT DimShops.Paths[Lookup Match Output]"
+              endId="Package\DFT DimShops\Add DateTo Column.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT DimShops\Lkp - CheckIfNew.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT DimShops.Paths[Merge Join Output1]"
+              endId="Package\DFT DimShops\Sort SKLEPY_PRACOWNIK by ManagerKey Asc.Inputs[Sort Input]"
+              name="Merge Join Output"
+              startId="Package\DFT DimShops\Merge Join SKLEPY OBSZAR.Outputs[Merge Join Output]" />
             <path
               refId="Package\DFT DimShops.Paths[Merge Join Output2]"
               endId="Package\DFT DimShops\Sort.Inputs[Sort Input]"
               name="Merge Join Output"
               startId="Package\DFT DimShops\Merge Join SKLEPY OBSZAR PRACOWNIK.Outputs[Merge Join Output]" />
             <path
-              refId="Package\DFT DimShops.Paths[Merge Join Output1]"
-              endId="Package\DFT DimShops\Derived Column.Inputs[Derived Column Input]"
+              refId="Package\DFT DimShops.Paths[Merge Join Output]"
+              endId="Package\DFT DimShops\DateFrom.Inputs[Derived Column Input]"
               name="Merge Join Output"
               startId="Package\DFT DimShops\Join OLD And NEW Data.Outputs[Merge Join Output]" />
-            <path
-              refId="Package\DFT DimShops.Paths[Merge Join Output]"
-              endId="Package\DFT DimShops\Sort SKLEPY_PRACOWNIK by ManagerKey Asc.Inputs[Sort Input]"
-              name="Merge Join Output"
-              startId="Package\DFT DimShops\Merge Join SKLEPY OBSZAR.Outputs[Merge Join Output]" />
-            <path
-              refId="Package\DFT DimShops.Paths[Multicast Output 1]"
-              endId="Package\DFT DimShops\Union All.Inputs[Union All Input 2]"
-              name="Multicast Output 1"
-              startId="Package\DFT DimShops\Multicast.Outputs[Multicast Output 1]" />
             <path
               refId="Package\DFT DimShops.Paths[Multicast Output 2]"
               endId="Package\DFT DimShops\OLE DB Destination InsertNewRows 1.Inputs[OLE DB Destination Input]"
               name="Multicast Output 2"
               startId="Package\DFT DimShops\Multicast.Outputs[Multicast Output 2]" />
+            <path
+              refId="Package\DFT DimShops.Paths[Multicast Output 3]"
+              endId="Package\DFT DimShops\Union All.Inputs[Union All Input 1]"
+              name="Multicast Output 3"
+              startId="Package\DFT DimShops\Multicast.Outputs[Multicast Output 3]" />
             <path
               refId="Package\DFT DimShops.Paths[NewData]"
               endId="Package\DFT DimShops\Row Count Insert.Inputs[Row Count Input 1]"
@@ -7233,22 +7051,22 @@ WHERE [StoreName] = ?
               startId="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\DFT DimShops.Paths[Row Count Output 1]"
-              endId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input]"
-              name="Row Count Output 1"
-              startId="Package\DFT DimShops\RC All Rows.Outputs[Row Count Output 1]" />
-            <path
-              refId="Package\DFT DimShops.Paths[Row Count Output 12]"
-              endId="Package\DFT DimShops\Multicast.Inputs[Multicast Input 1]"
-              name="Row Count Output 1"
-              startId="Package\DFT DimShops\Row Count Update Data.Outputs[Row Count Output 1]" />
-            <path
-              refId="Package\DFT DimShops.Paths[Row Count Output 11]"
               endId="Package\DFT DimShops\Lkp - CheckIfNew.Inputs[Lookup Input]"
               name="Row Count Output 1"
               startId="Package\DFT DimShops\Row Count Insert.Outputs[Row Count Output 1]" />
             <path
+              refId="Package\DFT DimShops.Paths[Row Count Output 11]"
+              endId="Package\DFT DimShops\Remove nulls.Inputs[Derived Column Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT DimShops\RC All Rows.Outputs[Row Count Output 1]" />
+            <path
               refId="Package\DFT DimShops.Paths[Row Count Output 13]"
-              endId="Package\DFT DimShops\Union All.Inputs[Union All Input 1]"
+              endId="Package\DFT DimShops\Multicast.Inputs[Multicast Input 1]"
+              name="Row Count Output 1"
+              startId="Package\DFT DimShops\Row Count Update Data.Outputs[Row Count Output 1]" />
+            <path
+              refId="Package\DFT DimShops.Paths[Row Count Output 12]"
+              endId="Package\DFT DimShops\Union All.Inputs[Union All Input 2]"
               name="Row Count Output 1"
               startId="Package\DFT DimShops\Row Count Delete Data.Outputs[Row Count Output 1]" />
             <path
@@ -7268,24 +7086,24 @@ WHERE [StoreName] = ?
               startId="Package\DFT DimShops\Sort PRACOWNIK by EmployeeKey Asc.Outputs[Sort Output]" />
             <path
               refId="Package\DFT DimShops.Paths[Sort Output3]"
-              endId="Package\DFT DimShops\Join OLD And NEW Data.Inputs[Merge Join Left Input]"
-              name="Sort Output"
-              startId="Package\DFT DimShops\OLD.Outputs[Sort Output]" />
-            <path
-              refId="Package\DFT DimShops.Paths[Sort Output4]"
               endId="Package\DFT DimShops\Merge Join SKLEPY OBSZAR.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\DFT DimShops\Sort OBSZAR by GeographyKey Asc.Outputs[Sort Output]" />
             <path
-              refId="Package\DFT DimShops.Paths[Sort Output5]"
+              refId="Package\DFT DimShops.Paths[Sort Output4]"
               endId="Package\DFT DimShops\Join OLD And NEW Data.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\DFT DimShops\NEW.Outputs[Sort Output]" />
             <path
-              refId="Package\DFT DimShops.Paths[Sort Output6]"
+              refId="Package\DFT DimShops.Paths[Sort Output5]"
               endId="Package\DFT DimShops\NEW.Inputs[Sort Input]"
               name="Sort Output"
               startId="Package\DFT DimShops\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\DFT DimShops.Paths[Sort Output6]"
+              endId="Package\DFT DimShops\Join OLD And NEW Data.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\DFT DimShops\OLD.Outputs[Sort Output]" />
             <path
               refId="Package\DFT DimShops.Paths[Union All Output 1]"
               endId="Package\DFT DimShops\Set DateTo to GETDATE.Inputs[OLE DB Command Input]"
@@ -7326,77 +7144,41 @@ WHERE [StoreName] = ?
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="162,42"
-          Id="Package\DFT DimShops\Lkp - CheckIfNew"
-          TopLeft="366,1115" />
-        <NodeLayout
-          Size="193,42"
-          Id="Package\DFT DimShops\Set DateTo to GETDATE"
-          TopLeft="821,1315" />
-        <NodeLayout
           Size="274,42"
           Id="Package\DFT DimShops\Merge Join SKLEPY OBSZAR PRACOWNIK"
           TopLeft="798,371" />
         <NodeLayout
-          Size="193,42"
-          Id="Package\DFT DimShops\Row Count Update Data"
-          TopLeft="877,1023" />
+          Size="162,42"
+          Id="Package\DFT DimShops\Lkp - CheckIfNew"
+          TopLeft="366,1115" />
         <NodeLayout
-          Size="257,42"
-          Id="Package\DFT DimShops\OLE DB Destination InsertNewRows 1"
-          TopLeft="1067.22222222222,1249.88888888889" />
+          Size="121,42"
+          Id="Package\DFT DimShops\Union All"
+          TopLeft="767,1193" />
         <NodeLayout
-          Size="211,42"
-          Id="Package\DFT DimShops\Row Count No Action Taken"
-          TopLeft="1102,977" />
+          Size="99,42"
+          Id="Package\DFT DimShops\OLD"
+          TopLeft="411,528" />
         <NodeLayout
           Size="135,42"
           Id="Package\DFT DimShops\FFS SKLEPY"
           TopLeft="245,23" />
         <NodeLayout
-          Size="161,42"
-          Id="Package\DFT DimShops\Row Count Insert"
-          TopLeft="374,989" />
+          Size="248,42"
+          Id="Package\DFT DimShops\OLE DB Destination InsertNewRows"
+          TopLeft="311,1336" />
         <NodeLayout
-          Size="189,42"
-          Id="Package\DFT DimShops\Row Count Delete Data"
-          TopLeft="584,1024" />
-        <NodeLayout
-          Size="243,42"
-          Id="Package\DFT DimShops\Sort SKLEPY by GeographyKey Asc"
-          TopLeft="190,180" />
+          Size="98,42"
+          Id="Package\DFT DimShops\Sort"
+          TopLeft="882.5,452.5" />
         <NodeLayout
           Size="337,42"
           Id="Package\DFT DimShops\OLE DB Current Data in Table OLE DB DimStoreReload"
           TopLeft="33,532" />
         <NodeLayout
-          Size="177,42"
-          Id="Package\DFT DimShops\Split Actions UPSERT"
-          TopLeft="612,865" />
-        <NodeLayout
-          Size="159,42"
-          Id="Package\DFT DimShops\FFS PRACOWNIK"
-          TopLeft="856,156" />
-        <NodeLayout
-          Size="121,42"
-          Id="Package\DFT DimShops\Union All"
-          TopLeft="733,1195" />
-        <NodeLayout
-          Size="211,42"
-          Id="Package\DFT DimShops\Merge Join SKLEPY OBSZAR"
-          TopLeft="344,247" />
-        <NodeLayout
-          Size="261,42"
-          Id="Package\DFT DimShops\Sort PRACOWNIK by EmployeeKey Asc"
-          TopLeft="800,271" />
-        <NodeLayout
-          Size="102,42"
-          Id="Package\DFT DimShops\NEW"
-          TopLeft="879,527.25" />
-        <NodeLayout
-          Size="120,42"
-          Id="Package\DFT DimShops\Multicast"
-          TopLeft="912,1133" />
+          Size="243,42"
+          Id="Package\DFT DimShops\Sort SKLEPY by GeographyKey Asc"
+          TopLeft="190,180" />
         <NodeLayout
           Size="142,42"
           Id="Package\DFT DimShops\Remove nulls"
@@ -7406,17 +7188,69 @@ WHERE [StoreName] = ?
           Id="Package\DFT DimShops\RC All Rows"
           TopLeft="631,702" />
         <NodeLayout
+          Size="177,42"
+          Id="Package\DFT DimShops\Split Actions UPSERT"
+          TopLeft="612,865" />
+        <NodeLayout
+          Size="211,42"
+          Id="Package\DFT DimShops\Merge Join SKLEPY OBSZAR"
+          TopLeft="344,247" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\DFT DimShops\FFS PRACOWNIK"
+          TopLeft="856,156" />
+        <NodeLayout
+          Size="102,42"
+          Id="Package\DFT DimShops\NEW"
+          TopLeft="879,527.25" />
+        <NodeLayout
+          Size="261,42"
+          Id="Package\DFT DimShops\Sort PRACOWNIK by EmployeeKey Asc"
+          TopLeft="800,271" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\DFT DimShops\Multicast"
+          TopLeft="912,1133" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\DFT DimShops\Set DateTo to GETDATE"
+          TopLeft="821,1315" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\DFT DimShops\OLE DB Destination"
+          TopLeft="844.444444444444,1411.11111111111" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\DFT DimShops\Row Count Update Data"
+          TopLeft="877,1023" />
+        <NodeLayout
+          Size="211,42"
+          Id="Package\DFT DimShops\Row Count No Action Taken"
+          TopLeft="1102,977" />
+        <NodeLayout
           Size="138,42"
           Id="Package\DFT DimShops\FFS OBSZAR"
           TopLeft="509,24" />
+        <NodeLayout
+          Size="257,42"
+          Id="Package\DFT DimShops\OLE DB Destination InsertNewRows 1"
+          TopLeft="1067.22222222222,1249.88888888889" />
         <NodeLayout
           Size="194,42"
           Id="Package\DFT DimShops\Join OLD And NEW Data"
           TopLeft="608,524" />
         <NodeLayout
-          Size="248,42"
-          Id="Package\DFT DimShops\OLE DB Destination InsertNewRows"
-          TopLeft="311,1336" />
+          Size="161,42"
+          Id="Package\DFT DimShops\Row Count Insert"
+          TopLeft="374,989" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\DFT DimShops\Add DateTo Column"
+          TopLeft="356,1227" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\DFT DimShops\Row Count Delete Data"
+          TopLeft="584,1024" />
         <NodeLayout
           Size="298,42"
           Id="Package\DFT DimShops\Sort SKLEPY_PRACOWNIK by ManagerKey Asc"
@@ -7426,17 +7260,155 @@ WHERE [StoreName] = ?
           Id="Package\DFT DimShops\Sort OBSZAR by GeographyKey Asc"
           TopLeft="452,179" />
         <NodeLayout
-          Size="163,42"
-          Id="Package\DFT DimShops\Derived Column 1"
-          TopLeft="356,1227" />
-        <NodeLayout
-          Size="99,42"
-          Id="Package\DFT DimShops\OLD"
-          TopLeft="411,528" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\DFT DimShops\Derived Column"
+          Size="125,42"
+          Id="Package\DFT DimShops\DateFrom"
           TopLeft="622,601" />
+        <EdgeLayout
+          Id="Package\DFT DimShops.Paths[Flat File Source Output1]"
+          TopLeft="576.5,66">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,113"
+              Start="0,0"
+              End="0,105.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,105.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT DimShops.Paths[Flat File Source Output]"
+          TopLeft="933,198">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73"
+              Start="0,0"
+              End="0,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT DimShops.Paths[Derived Column Output2]"
+          TopLeft="701.75,831">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT DimShops.Paths[Derived Column Output1]"
+          TopLeft="438.75,1269">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67"
+              Start="0,0"
+              End="0,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT DimShops.Paths[Derived Column Output]"
+          TopLeft="684.5,643">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14,59"
+              Start="0,0"
+              End="14,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.5"
+                    Point2="0,29.5"
+                    Point3="4,29.5" />
+                  <mssgle:LineSegment
+                    End="10,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10,29.5"
+                    Point2="14,29.5"
+                    Point3="14,33.5" />
+                  <mssgle:LineSegment
+                    End="14,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT DimShops.Paths[DeleteData]"
+          TopLeft="681.05,907">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,117"
+              Start="0,0"
+              End="0,109.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,109.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-24.723359375,49.87548828125,49.44671875,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT DimShops.Paths[UpdateData]"
           TopLeft="717.4,907">
@@ -7475,30 +7447,52 @@ WHERE [StoreName] = ?
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT DimShops.Paths[Union All Output 1]"
-          TopLeft="793.5,1237">
+          TopLeft="827.5,1235">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="124,78"
+              EndConnector="90,80"
               Start="0,0"
-              End="124,70.5">
+              End="90,72.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35" />
+                    End="0,36" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,35"
-                    Point2="0,39"
-                    Point3="4,39" />
+                    Point1="0,36"
+                    Point2="0,40"
+                    Point3="4,40" />
                   <mssgle:LineSegment
-                    End="120,39" />
+                    End="86,40" />
                   <mssgle:CubicBezierSegment
-                    Point1="120,39"
-                    Point2="124,39"
-                    Point3="124,43" />
+                    Point1="86,40"
+                    Point2="90,40"
+                    Point3="90,44" />
                   <mssgle:LineSegment
-                    End="124,70.5" />
+                    End="90,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT DimShops.Paths[Sort Output6]"
+          TopLeft="510,547">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="98,0"
+              Start="0,0"
+              End="90.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="90.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7509,6 +7503,28 @@ WHERE [StoreName] = ?
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT DimShops.Paths[Sort Output5]"
+          TopLeft="930.75,494.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.75"
+              Start="0,0"
+              End="0,25.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT DimShops.Paths[Sort Output4]"
           TopLeft="879,546.625">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7530,7 +7546,7 @@ WHERE [StoreName] = ?
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT DimShops.Paths[Sort Output4]"
+          Id="Package\DFT DimShops.Paths[Sort Output3]"
           TopLeft="575,221">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7555,28 +7571,6 @@ WHERE [StoreName] = ?
                     Point3="-91.6666666666667,19.4825964252117" />
                   <mssgle:LineSegment
                     End="-91.6666666666667,18.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT DimShops.Paths[Sort Output3]"
-          TopLeft="510,547">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="98,0"
-              Start="0,0"
-              End="90.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="90.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7677,40 +7671,6 @@ WHERE [StoreName] = ?
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT DimShops.Paths[Row Count Output 13]"
-          TopLeft="678.5,1066">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="115,129"
-              Start="0,0"
-              End="115,121.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,60.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,60.5"
-                    Point2="0,64.5"
-                    Point3="4,64.5" />
-                  <mssgle:LineSegment
-                    End="111,64.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="111,64.5"
-                    Point2="115,64.5"
-                    Point3="115,68.5" />
-                  <mssgle:LineSegment
-                    End="115,121.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT DimShops.Paths[Row Count Output 12]"
           TopLeft="972.75,1065">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7732,19 +7692,31 @@ WHERE [StoreName] = ?
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT DimShops.Paths[Row Count Output 11]"
-          TopLeft="450.75,1031">
+          Id="Package\DFT DimShops.Paths[Row Count Output 12]"
+          TopLeft="678.5,1066">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,84"
+              EndConnector="149,127"
               Start="0,0"
-              End="0,76.5">
+              End="149,119.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,76.5" />
+                    End="0,59.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,59.5"
+                    Point2="0,63.5"
+                    Point3="4,63.5" />
+                  <mssgle:LineSegment
+                    End="145,63.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="145,63.5"
+                    Point2="149,63.5"
+                    Point3="149,67.5" />
+                  <mssgle:LineSegment
+                    End="149,119.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7754,7 +7726,7 @@ WHERE [StoreName] = ?
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT DimShops.Paths[Row Count Output 1]"
+          Id="Package\DFT DimShops.Paths[Row Count Output 11]"
           TopLeft="700.75,744">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7767,6 +7739,28 @@ WHERE [StoreName] = ?
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT DimShops.Paths[Row Count Output 1]"
+          TopLeft="450.75,1031">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,84"
+              Start="0,0"
+              End="0,76.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7789,6 +7783,40 @@ WHERE [StoreName] = ?
                   Capacity="5">
                   <mssgle:LineSegment
                     End="33.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT DimShops.Paths[OLE DB Command Output]"
+          TopLeft="917.5,1357">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.444444444444,54.1111111111099"
+              Start="0,0"
+              End="12.444444444444,46.6111111111099">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.055555555555" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.055555555555"
+                    Point2="0,27.055555555555"
+                    Point3="4,27.055555555555" />
+                  <mssgle:LineSegment
+                    End="8.444444444444,27.055555555555" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.444444444444,27.055555555555"
+                    Point2="12.444444444444,27.055555555555"
+                    Point3="12.444444444444,31.055555555555" />
+                  <mssgle:LineSegment
+                    End="12.444444444444,46.6111111111099" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7870,6 +7898,40 @@ WHERE [StoreName] = ?
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\DFT DimShops.Paths[Multicast Output 3]"
+          TopLeft="912,1154">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-24,60"
+              Start="0,0"
+              End="-16.5,60">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-8,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8,0"
+                    Point2="-12,0"
+                    Point3="-12,4" />
+                  <mssgle:LineSegment
+                    End="-12,56" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-12,56"
+                    Point2="-12,60"
+                    Point3="-16,60" />
+                  <mssgle:LineSegment
+                    End="-16.5,60" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\DFT DimShops.Paths[Multicast Output 2]"
           TopLeft="972,1175">
           <EdgeLayout.Curve>
@@ -7904,31 +7966,19 @@ WHERE [StoreName] = ?
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT DimShops.Paths[Multicast Output 1]"
-          TopLeft="912,1154">
+          Id="Package\DFT DimShops.Paths[Merge Join Output2]"
+          TopLeft="933.25,413">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-58,62"
+              EndConnector="0,39.5"
               Start="0,0"
-              End="-50.5,62">
+              End="0,32">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-25,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-25,0"
-                    Point2="-29,0"
-                    Point3="-29,4" />
-                  <mssgle:LineSegment
-                    End="-29,58" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-29,58"
-                    Point2="-29,62"
-                    Point3="-33,62" />
-                  <mssgle:LineSegment
-                    End="-50.5,62" />
+                    End="0,32" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7939,28 +7989,6 @@ WHERE [StoreName] = ?
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT DimShops.Paths[Merge Join Output1]"
-          TopLeft="702,566">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,35"
-              Start="0,0"
-              End="0,27.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT DimShops.Paths[Merge Join Output]"
           TopLeft="453.25,289">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7973,6 +8001,40 @@ WHERE [StoreName] = ?
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT DimShops.Paths[Merge Join Output]"
+          TopLeft="705,566">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-20.5,35"
+              Start="0,0"
+              End="-20.5,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5"
+                    Point2="0,17.5"
+                    Point3="-4,17.5" />
+                  <mssgle:LineSegment
+                    End="-16.5,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-16.5,17.5"
+                    Point2="-20.5,17.5"
+                    Point3="-20.5,21.5" />
+                  <mssgle:LineSegment
+                    End="-20.5,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8004,259 +8066,27 @@ WHERE [StoreName] = ?
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT DimShops.Paths[Flat File Source Output1]"
-          TopLeft="576.5,66">
+          Id="Package\DFT DimShops.Paths[Lookup Match Output]"
+          TopLeft="444.75,1157">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,113"
+              EndConnector="0,70"
               Start="0,0"
-              End="0,105.5">
+              End="0,62.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,105.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT DimShops.Paths[Flat File Source Output]"
-          TopLeft="933,198">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,73"
-              Start="0,0"
-              End="0,65.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,65.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT DimShops.Paths[Derived Column Output2]"
-          TopLeft="701.75,831">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34"
-              Start="0,0"
-              End="0,26.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT DimShops.Paths[Derived Column Output1]"
-          TopLeft="436.25,1269">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,67"
-              Start="0,0"
-              End="0,59.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,59.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT DimShops.Paths[Derived Column Output]"
-          TopLeft="698.75,643">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59"
-              Start="0,0"
-              End="0,51.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT DimShops.Paths[DeleteData]"
-          TopLeft="681.05,907">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,117"
-              Start="0,0"
-              End="0,109.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,109.5" />
+                    End="0,62.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-24.723359375,49.87548828125,49.44671875,9.7490234375"
+              BoundingBox="-48.19138671875,25.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\DFT DimShops\OLE DB Destination"
-          TopLeft="844.444444444444,1411.11111111111" />
-        <EdgeLayout
-          Id="Package\DFT DimShops.Paths[OLE DB Command Output]"
-          TopLeft="917.5,1357">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="12.4444444444443,54.1111111111111"
-              Start="0,0"
-              End="12.4444444444443,46.6111111111111">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.0555555555555" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.0555555555555"
-                    Point2="0,27.0555555555555"
-                    Point3="4,27.0555555555555" />
-                  <mssgle:LineSegment
-                    End="8.44444444444434,27.0555555555555" />
-                  <mssgle:CubicBezierSegment
-                    Point1="8.44444444444434,27.0555555555555"
-                    Point2="12.4444444444443,27.0555555555555"
-                    Point3="12.4444444444443,31.0555555555555" />
-                  <mssgle:LineSegment
-                    End="12.4444444444443,46.6111111111111" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT DimShops.Paths[Lookup No Match Output]"
-          TopLeft="447,1157">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-9.5,70"
-              Start="0,0"
-              End="-9.5,62.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31"
-                    Point2="0,35"
-                    Point3="-4,35" />
-                  <mssgle:LineSegment
-                    End="-5.5,35" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-5.5,35"
-                    Point2="-9.5,35"
-                    Point3="-9.5,39" />
-                  <mssgle:LineSegment
-                    End="-9.5,62.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-60.55638671875,40,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="98,42"
-          Id="Package\DFT DimShops\Sort"
-          TopLeft="882.5,452.5" />
-        <EdgeLayout
-          Id="Package\DFT DimShops.Paths[Merge Join Output2]"
-          TopLeft="933.25,413">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,39.5"
-              Start="0,0"
-              End="0,32">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT DimShops.Paths[Sort Output6]"
-          TopLeft="930.75,494.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,32.75"
-              Start="0,0"
-              End="0,25.25">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.25" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -8286,7 +8116,7 @@ WHERE [StoreName] = ?
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT DimShops\OLE DB Destination InsertNewRows 1">
+    design-time-name="Package\DFT DimShops\OLE DB Destination InsertNewRows">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8307,7 +8137,7 @@ WHERE [StoreName] = ?
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT DimShops\OLE DB Destination InsertNewRows">
+    design-time-name="Package\DFT DimShops\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8320,7 +8150,7 @@ WHERE [StoreName] = ?
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT DimShops\OLE DB Destination">
+    design-time-name="Package\DFT DimShops\OLE DB Destination InsertNewRows 1">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
